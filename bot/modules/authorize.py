@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 from pyrogram.handlers import MessageHandler
 from pyrogram.filters import command, regex
-
 from bot import user_data, DATABASE_URL, bot, LOGGER
 from bot.helper.telegram_helper.message_utils import sendMessage
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.ext_utils.db_handler import DbManger
 from bot.helper.ext_utils.bot_utils import update_user_ldata
-
-
 async def authorize(client, message):
     msg = message.text.split()
     tid_ = ""
@@ -46,8 +43,6 @@ async def authorize(client, message):
         if DATABASE_URL:
             await DbManger().update_user_data(id_)
     await sendMessage(message, msg)
-
-
 async def unauthorize(client, message):
     msg = message.text.split()
     tid_ = ""
@@ -76,8 +71,6 @@ async def unauthorize(client, message):
     else:
         msg = 'Already Unauthorized!'
     await sendMessage(message, msg)
-
-
 async def addSudo(client, message):
     id_ = ""
     msg = message.text.split()
@@ -96,8 +89,6 @@ async def addSudo(client, message):
     else:
         msg = "<i>Give User's ID or Reply to User's message of whom you want to Promote as Sudo</i>"
     await sendMessage(message, msg)
-
-
 async def removeSudo(client, message):
     id_ = ""
     msg = message.text.split()
@@ -116,8 +107,6 @@ async def removeSudo(client, message):
     else:
         msg = "<i>Give User's ID or Reply to User's message of whom you want to Demote</i>"
     await sendMessage(message, msg)
-
-
 async def addBlackList(_, message):
     id_ = ""
     msg = message.text.split()
@@ -136,8 +125,6 @@ async def addBlackList(_, message):
     else:
         msg = "Give ID or Reply To message of whom you want to blacklist."
     await sendMessage(message, msg)
-
-
 async def rmBlackList(_, message):
     id_ = ""
     msg = message.text.split()
